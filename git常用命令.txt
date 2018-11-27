@@ -1,0 +1,92 @@
+本地仓库或者分支
+git init filename  创建一个仓库
+git add  添加到暂存区  git add . 添加所有修改 git add filename  只添加文件
+git commit  提交到仓库  git commit -m '提交的说明'
+git rm filename 从版本库中删除该文件
+
+git status  查看状态
+git diff filename 比较工作区和暂存区不同 diff HEAD -- filename 比较工作区和版本库区别
+
+git log 查看提交日志 --pretty=oneline 去除不必要的信息
+git reflog  查看所有命令日志
+
+git checkout -- filename 撤销修改，未放入暂存区，回到版本库状态，添加暂存区，回到添加前状态
+git reset HEAD filename 暂存区的修改撤销掉,重新放回工作区
+
+git reset 版本重置（回滚）--hard HEAD^ 表示上一个版本 HEAD^^ 上上个版本 HEAD~100 往上100个版本
+		  --hard 哈希值前四位，回滚到指定版本
+
+git stash 把当前工作现场“储藏”起来
+git stash list 查看储藏
+
+git stash apply 恢复工作现场，并不会删除stash内容
+git stash drop 删除stash内容
+
+git stash pop 恢复工作现场，同时删除stash内容
+
+
+操作远程
+git remote 看远程库的信息 -v 获取详情
+git clone ssh_address 克隆一个仓库
+
+git checkout -b branch_name origin/branch_name  本地创建和远程分支对应的分支
+
+git branch --set-upstream branch_name origin/branch_name  建立本地分支和远程分支的关联
+
+git push origin branch_name  推送分支 
+git pull 抓取远程的新提交		  
+git rebase 把分叉的提交历史“整理”成一条直线,取消合并分支的每个提交
+		  
+.gitignore  忽略特殊文件，配置文件在线浏览https://github.com/github/gitignore  
+		  
+远程仓库github
+初次安装
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+
+第1步：创建SSH Key 
+	   ssh-keygen -t rsa -C "youremail@example.com"
+第2步：登陆GitHub 设置密钥
+
+将已有的本地仓库与远程库关联 origin_name
+git remote add origin_name git@github.com:jobjboy/demo_git.git
+
+
+当前分支master推送到远程库，-u参数，关联本地master分支和远程的master分支
+git push -u origin_name master
+	
+	
+分支管理
+git checkout -b name  加-b参数表示切换并创建分支
+git checkout name  切换分支
+
+git branch name  创建分支
+git branch  查看所有分支 当前 * 表示
+git merge 合并指定分支到当前分支
+git branch -d name 删除分支 -D 强行删除
+
+git默认Fast forward模式，删除分支后，会丢掉分支信息
+禁用Fast forward在merge时生成一个新的commit
+git merge --no-ff -m "提交的说明" dev 
+
+git log --graph 命令可以看到分支合并图
+git log --graph --pretty=oneline --abbrev-commit 去除不必要的信息，查看合并图
+
+
+标签管理
+git tag 查看标签
+git tag name 创建标签
+git tag name commit_id 创建某次提交标签
+
+git show tag_name  查看标签信息
+git tag -a name -m "提交的说明" commit_id  指定标签信息
+
+git tag -d name  删除标签
+git push origin	name  推送某个标签到远程	  
+git push origin --tags   推送全部尚未推送到远程
+
+git push origin :refs/tags/name  从远程删除，先删除本地
+
+
+Fork开源仓库，获取Fork后的读写权限，pull request 推送给官方仓库贡献代码
+
