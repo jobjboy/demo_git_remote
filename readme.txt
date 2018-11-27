@@ -6,3 +6,4 @@ git rebase demo
 git rebase pull after
 git pull demo
 中文试试rebase
+冲突文字
