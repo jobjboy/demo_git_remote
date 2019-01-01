@@ -1,0 +1,14 @@
+掘金-花裤衩 
+https://juejin.im/post/59097cd7a22b9d0065fb61d2
+
+淘宝镜像
+npm install --registry=https://registry.npm.taobao.org
+
+文档生成器 swagger    api文档
+https://swagger.io/
+
+前端自行mock	伪造数据
+https://easy-mock.com/dashboard
+
+iconfont		图标
+https://www.iconfont.cn/
